@@ -1,2 +1,11 @@
 server:
   port: 8084
+
+application:
+  url: http://${APPLICATION_URL:localhost}:8082/
+
+deal:
+  url: http://${DEAL_URL:localhost}:8081/
+
+#    url: http://${DEAL_URL:localhost}:8081/
+

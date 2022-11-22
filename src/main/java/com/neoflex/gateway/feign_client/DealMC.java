@@ -8,26 +8,26 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@FeignClient(name = "Deal", url = "http://localhost:8081/deal")
+@FeignClient(name = "Deal", url = "${deal.url}")
 public interface DealMC {
 
-    @PutMapping("/calculate/{applicationId}")
+    @PutMapping("/deal/calculate/{applicationId}")
     public void calculate(@RequestBody FinishRegistrationRequestDTO finishRegistrationRequestDTO,
                           @PathVariable Long applicationId);
 
-    @PostMapping("/document/{applicationId}/send")
+    @PostMapping("/deal/document/{applicationId}/send")
     public void documentSend(@PathVariable Long applicationId) throws JsonProcessingException;
 
-    @PostMapping("/document/{applicationId}/sign")
+    @PostMapping("/deal/document/{applicationId}/sign")
     public void documentSign(@PathVariable Long applicationId) throws JsonProcessingException;
 
-    @PostMapping("/document/{applicationId}/code")
+    @PostMapping("/deal/document/{applicationId}/code")
     public void documentCode(@PathVariable Long applicationId, @RequestBody Integer sesCode);
 
-    @GetMapping("/admin/application/{applicationId}")
+    @GetMapping("/deal/admin/application/{applicationId}")
     public ApplicationDTO getApplicationById(@PathVariable Long applicationId);
 
-    @GetMapping("/admin/application")
+    @GetMapping("/deal/admin/application")
     public List<ApplicationDTO> getAllApplications();
 
 }
